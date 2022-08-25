@@ -1,0 +1,11 @@
+{
+    "buildConfigurations": {
+        "app": {
+            "domain": "http://localhost",
+            "port": 3000,
+            "root": "",
+            "publicFolder": "",
+            "testMode": false
+        }
+    }
+}

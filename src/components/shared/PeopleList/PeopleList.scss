@@ -1,0 +1,71 @@
+@import '../../../css/colors.scss';
+@import '../../../css/variables.scss';
+
+.data-devs {
+  color: $grey-400;
+
+  .dev {
+    border-bottom: 1px solid $border-main-color;
+    padding: $spacing-xs;
+
+    &-id {
+      width: $item-size-xs * 2;
+    }
+
+    &-icon {
+      margin: 0 $spacing-s;
+
+      img {
+        display: inline-block;
+        width: 60px;
+        height: 60px;
+        border: 1px solid white;
+        border-radius: 50%;
+      }
+    }
+
+    &-name {
+    }
+
+    &-repo {
+      &-title {
+        svg {
+          margin-right: $spacing-xs;
+          color: $warning-main-color;
+        }
+      }
+
+      &-name {
+        margin: $spacing-xs 0;
+        display: flex;
+        align-items: center;
+
+        svg {
+          margin-right: $spacing-xs;
+        }
+      }
+
+      &-description {
+      }
+    }
+
+    &-actions {
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        padding: 0 12px;
+        display: flex;
+        align-items: center;
+        margin-right: $spacing-xs;
+      }
+
+      &__sponsor {
+        svg {
+          margin-right: $spacing-xs;
+          color: $pink;
+        }
+      }
+    }
+  }
+}

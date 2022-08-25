@@ -1,0 +1,21 @@
+@import '../../../css/colors.scss';
+@import '../../../css/variables.scss';
+
+.header {
+  height: $header-height;
+  padding-top: $spacing-xs;
+  text-align: center;
+  border-bottom: 1px solid $border-main-color;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: $font-size-xxl + 10px;
+  }
+
+  .header {
+    &__text {
+      font-size: $main-font-size;
+    }
+  }
+}

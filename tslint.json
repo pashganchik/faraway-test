@@ -1,0 +1,23 @@
+{
+    "extends": ["tslint:latest", "tslint-react", "tslint-config-prettier"],
+    "linterOptions": {
+        "exclude": ["node_modules/**/*.ts", "dist/**/*", "build/**/*", ".storybook/**/*"]
+    },
+    "rules": {
+        "no-submodule-imports": false,
+        "ordered-imports": false,
+        "member-access": false,
+        "object-literal-sort-keys": false,
+        "interface-name": false,
+        "jsx-no-lambda": false,
+        "no-object-literal-type-assertion": false,
+        "no-empty": false,
+        "prefer-conditional-expression": false,
+        "no-shadowed-variable": false,
+        "no-implicit-dependencies": [true, "dev"],
+        "jsx-key": false,
+        "variable-name": false,
+        "no-console": false,
+        "interface-name-prefix": false
+    }
+}

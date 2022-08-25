@@ -1,0 +1,13 @@
+@import './css/colors.scss';
+@import './css/variables.scss';
+
+.app {
+  color: $text-primary-color;
+  background-color: $background-default-color;
+  height: 100%;
+  font-size: $main-font-size;
+
+  .appContent {
+    min-height: calc(100vh - #{$footer-height});
+  }
+}
