@@ -8,13 +8,12 @@ import { getLocaleInfo } from './utils/locale';
 import Footer from './components/shared/Footer/Footer';
 import PeoplePage from './components/pages/PeoplePage/PeoplePage';
 import PersonPage from './components/pages/PersonPage/PersonPage';
-
 import { WrapIntlProvider } from './utils/providers';
 
 import './App.scss';
 import './main.scss';
 
-const App = (props: IAppProps): React.ReactElement => {
+const App = (): React.ReactElement => {
   const localeInfo = useMemo(() => getLocaleInfo(), []);
   injectStyle();
 
@@ -42,7 +41,5 @@ const App = (props: IAppProps): React.ReactElement => {
 
   return <WrapIntlProvider locale={localeInfo.locale}>{appComponent}</WrapIntlProvider>;
 };
-
-interface IAppProps {}
 
 export default App;

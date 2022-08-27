@@ -8,9 +8,7 @@ const PeoplePage = (): React.ReactElement => {
   return (
     <div className="people-page">
       <Header textId="header-text-people" />
-      <div className="people-page__content">
-        <PeopleList />
-      </div>
+      <PeopleList />
     </div>
   );
 };

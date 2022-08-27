@@ -4,6 +4,7 @@ import { IDataState } from '../utils/types';
 import { GET_PEOPLE, GET_PEOPLE_DONE, GET_PERSON, GET_PERSON_DONE } from './actions';
 
 const initialState: IDataState = {
+  personsCount: undefined,
   persons: [],
   person: undefined,
   loading: false,
@@ -18,8 +19,8 @@ const mainReducer = (state = initialState, action: AnyAction): InitialStateType 
       return { ...state, loading: true, error: undefined };
     }
     case GET_PEOPLE_DONE: {
-      const { persons } = action;
-      return { ...state, persons, loading: false };
+      const { persons, personsCount } = action;
+      return { ...state, persons, personsCount, loading: false };
     }
     case GET_PERSON: {
       return { ...state, loading: true, error: undefined };

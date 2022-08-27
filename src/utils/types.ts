@@ -3,6 +3,7 @@ export interface IRootState {
 }
 
 export interface IDataState {
+  personsCount: number | undefined;
   persons: IPerson[];
   person: IPersonFull | undefined;
   loading: boolean;
@@ -28,6 +29,7 @@ export interface IEntity {
 export enum Gender {
   MALE = 'male',
   FEMALE = 'female',
+  HERMAPHRODITE = 'hermaphrodite',
   NA = 'n/a',
 }
 

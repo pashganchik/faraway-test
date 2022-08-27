@@ -30,14 +30,16 @@ function* fetchPeople(data: any) {
   const headers: HeadersInit = prepareHeaders();
   const params = { method: 'GET', headers };
 
-  const url = `${Const.ApiBaseUrl}/people/?page=${page || 1}`;
+  const url = `${Const.ApiBaseUrl}/people/?page=${(page || 0) + 1}`;
 
   const response: IResponseEntities = yield call(callApi, url, params);
   const persons = response.results as IPerson[];
+  const personsCount = response.count;
 
   yield put({
     type: GET_PEOPLE_DONE,
     persons,
+    personsCount,
   });
 }
 
