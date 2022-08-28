@@ -1,7 +1,9 @@
-import { put, takeLatest, all, call, delay } from 'redux-saga/effects';
+import { put, takeLatest, all, call } from 'redux-saga/effects';
 import { GET_PEOPLE, GET_PEOPLE_DONE, GET_PERSON, GET_PERSON_DONE } from './actions';
-import { IPerson, IPersonFull, IResponseEntities } from '../utils/types';
+import { IEntity, IPerson, IPersonFull, IResponseEntities } from '../utils/types';
 import { Const } from '../utils/const';
+import { localDb } from '../utils/db';
+import { mergePerson, mergePersons } from '../utils/window';
 
 //////////////////////////////////////////////////////////////////////////////
 
@@ -19,10 +21,6 @@ async function callApi(url: string, params: { [key: string]: any }): Promise<any
   return await response.json();
 }
 
-async function callPromise(promise: any, params: { [key: string]: any }): Promise<any> {
-  return await promise(params);
-}
-
 //////////////////////////////////////////////////////////////////////////////
 
 function* fetchPeople(data: any) {
@@ -34,6 +32,9 @@ function* fetchPeople(data: any) {
 
   const response: IResponseEntities = yield call(callApi, url, params);
   const persons = response.results as IPerson[];
+  const personsDb = localDb.getPeopleFromLocal();
+  mergePersons(personsDb, persons);
+
   const personsCount = response.count;
 
   yield put({
@@ -50,7 +51,28 @@ function* fetchPerson(data: any) {
 
   const url = `${Const.ApiBaseUrl}/people/${personId}`;
 
-  const person: IPerson[] = yield call(callApi, url, params);
+  const person: IPersonFull = yield call(callApi, url, params);
+  const personDb = localDb.getPersonFromLocal(person.url);
+  mergePerson(personDb, person);
+
+  const planet: IEntity = yield call(callApi, person.homeworld, params);
+  person.homeworldFull = planet;
+
+  const callFilms = person.films.map((x) => call(callApi, x, params));
+  const films: IEntity[] = yield all(callFilms);
+  person.filmsFull = films;
+
+  const callSpecies = person.species.map((x) => call(callApi, x, params));
+  const species: IEntity[] = yield all(callSpecies);
+  person.speciesFull = species;
+
+  const callVehicles = person.vehicles.map((x) => call(callApi, x, params));
+  const vehicles: IEntity[] = yield all(callVehicles);
+  person.vehiclesFull = vehicles;
+
+  const callStarships = person.starships.map((x) => call(callApi, x, params));
+  const starships: IEntity[] = yield all(callStarships);
+  person.starshipsFull = starships;
 
   yield put({
     type: GET_PERSON_DONE,

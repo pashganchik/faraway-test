@@ -8,13 +8,13 @@ const Header = (props: IHeaderProps): React.ReactElement => {
 
   return (
     <header className="header">
-      <h1>
+      <h2>
         <FormattedMessage id="header-title" />
-      </h1>
+      </h2>
       {textId && (
-        <h6 className="header__text">
+        <h5 className="header__text">
           <FormattedMessage id={textId} />
-        </h6>
+        </h5>
       )}
     </header>
   );

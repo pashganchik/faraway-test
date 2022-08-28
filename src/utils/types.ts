@@ -21,6 +21,7 @@ export interface IResponseEntities {
 
 export interface IEntity {
   name: string;
+  title: string;
   created: string;
   edited: string;
   url: TUrlPath;
@@ -54,6 +55,7 @@ export interface IPerson {
   created: string;
   edited: string;
   url: TUrlPath;
+  [key: string]: any;
 }
 
 export interface IPersonFull extends IPerson {

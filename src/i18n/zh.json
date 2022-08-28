@@ -1,8 +1,8 @@
 {
   "footer-text": "Faraway, Copyright © {date}, All right reserved",
   "header-title": "Faraway web application",
-  "header-text-people": "People",
-  "header-text-person": "Person",
+  "header-text-people": "People list",
+  "header-text-person": "Person data",
   "loading": "Data is loading, pease wait ...",
   "no-data": "There is no data by your request",
   "success": "Operation successfully finished",

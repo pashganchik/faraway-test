@@ -1,7 +1,6 @@
 import React, { Dispatch, useState, useEffect, useMemo, useRef } from 'react';
 import { connect } from 'react-redux';
 import { AnyAction } from 'redux';
-import { FormattedMessage } from 'react-intl';
 import { Form, Button } from 'react-bootstrap';
 import { FaSearch } from 'react-icons/fa';
 
@@ -11,6 +10,8 @@ import { getPeople } from '../../../redux/actions';
 import { Const } from '../../../utils/const';
 import PersonItem from './PersonItem';
 import { Pager, OnPageChangeEventType } from '../Pager/Pager';
+import Loading from '../Loading/Loading';
+import NoData from '../NoData/NoData';
 
 import './PeopleList.scss';
 
@@ -50,17 +51,9 @@ const PeopleList = (props: IPeopleListProps): React.ReactElement => {
 
   return (
     <div className="people-list">
-      {isLoading && (
-        <span>
-          <FormattedMessage id="loading" />
-        </span>
-      )}
+      {isLoading && <Loading />}
 
-      {!hasData && !isLoading && (
-        <span>
-          <FormattedMessage id="no-data" />
-        </span>
-      )}
+      {!hasData && !isLoading && <NoData />}
 
       {hasData && !isLoading && (
         <>

@@ -1,6 +1,9 @@
-import React from 'react';
-import { IPerson } from '../../../utils/types';
+import React, { useMemo } from 'react';
 import Card from 'react-bootstrap/Card';
+import { FaEdit } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { IPerson } from '../../../utils/types';
+import { trimTrailingSlashes } from '../../../utils/window';
 
 import './PersonItem.scss';
 
@@ -10,6 +13,9 @@ interface IPersonItemProps {
 
 const PersonItem = (props: IPersonItemProps): React.ReactElement => {
   const { person } = props;
+  const personId = useMemo(() => {
+    return trimTrailingSlashes(person.url).split('/').pop();
+  }, [person]);
 
   return (
     <Card className="person-item">
@@ -54,6 +60,9 @@ const PersonItem = (props: IPersonItemProps): React.ReactElement => {
           <small>Edited:</small> {new Date(person.edited).toLocaleDateString()}
         </span>
       </Card.Footer>
+      <Link to={`/person/${personId}`} className="person-item-edit" title="Edit Person">
+        <FaEdit />
+      </Link>
     </Card>
   );
 };

@@ -1,0 +1,9 @@
+@import '../../../css/colors.scss';
+@import '../../../css/variables.scss';
+
+.person-form {
+  .row {
+    padding: 10px;
+    border-bottom: 1px solid $border-main-color;
+  }
+}

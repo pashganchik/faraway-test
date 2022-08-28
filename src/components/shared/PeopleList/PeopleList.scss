@@ -5,7 +5,7 @@
   &-filter {
     padding: 10px 5px;
     display: flex;
-    justify-content: end;
+    justify-content: center;
     align-items: center;
 
     input {
@@ -28,5 +28,35 @@
   &-paging {
     display: flex;
     justify-content: end;
+  }
+}
+
+@media (max-width: 1200px) {
+  .people-list {
+    &-grid {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}
+
+@media (max-width: 800px) {
+  .people-list {
+    &-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .people-list {
+    &-filter {
+      justify-content: center;
+    }
+    &-grid {
+      grid-template-columns: 1fr;
+    }
+    &-paging {
+      justify-content: center;
+    }
   }
 }

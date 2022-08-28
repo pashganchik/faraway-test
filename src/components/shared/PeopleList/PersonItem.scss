@@ -3,11 +3,17 @@
 
 .person-item {
   width: 300px;
-  margin: 5px;
+  margin: 5px auto;
 
   small {
     font-size: $label-fontsize;
     font-style: italic;
     opacity: 0.7;
+  }
+
+  &-edit {
+    position: absolute;
+    top: 10px;
+    left: 15px;
   }
 }
