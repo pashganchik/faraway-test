@@ -12,9 +12,9 @@ import { useHistory, useParams } from 'react-router-dom';
 import Loading from '../Loading/Loading';
 import NoData from '../NoData/NoData';
 import { localDb } from '../../../utils/db';
+import { pickPerson } from '../../../utils/window';
 
 import './PersonForm.scss';
-import { pickPerson } from '../../../utils/window';
 
 interface IPersonFormParams {
   personId?: string;
